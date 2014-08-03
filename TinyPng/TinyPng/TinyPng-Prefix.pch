@@ -1,0 +1,13 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+
+#define TINYPNGKEY          @"A18RvHJ69RisHnwg9xuTELOuUDfZIg9-"
+#define TINYPNG_URL     @"https://api.tinypng.com/shrink"
