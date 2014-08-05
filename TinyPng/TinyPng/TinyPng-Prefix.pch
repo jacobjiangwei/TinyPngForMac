@@ -10,4 +10,5 @@
 
 
 #define TINYPNGKEY          @"A18RvHJ69RisHnwg9xuTELOuUDfZIg9-"
+#define TINY126KEY              @"Tfjg_7u_NdB_VNe1cCHca178omNK_rCN"
 #define TINYPNG_URL     @"https://api.tinypng.com/shrink"

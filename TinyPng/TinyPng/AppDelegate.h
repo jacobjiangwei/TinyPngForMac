@@ -15,12 +15,14 @@
     NSString                    *keyParameter;
     NSMutableArray         *allTasks;
     NSTimer *timer;
+    int                             taskCount;
 }
 @property (weak) IBOutlet NSTextField *folderPathTextfield;
 @property (weak) IBOutlet NSTextField *keyTextfield;
 @property (weak) IBOutlet NSTextField *errorMsgLabel;
 @property (weak) IBOutlet NSProgressIndicator *activity;
 @property (weak) IBOutlet NSTableView *resultTableView;
+@property (weak) IBOutlet NSTextField *logTextField;
 
 @property (assign) IBOutlet NSWindow *window;
 - (IBAction)selectFolder:(id)sender;

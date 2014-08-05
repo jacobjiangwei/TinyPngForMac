@@ -16,7 +16,7 @@
 //    [[HttpClient manager] test];
     // Insert code here to initialize your application
     self.keyTextfield.stringValue=TINYPNGKEY;
-
+    taskCount=0;
 }
 
 - (IBAction)selectFolder:(id)sender {
@@ -68,6 +68,24 @@
 
 -(void)refresh
 {
+    NSLog(@"目前任务数 : %d",taskCount);
+    self.logTextField.stringValue=[NSString stringWithFormat:@"Current task : %d",taskCount];
+    if (taskCount<=0) {
+        NSLog(@"目前没任务了");
+        for (Task *job in allTasks) {
+            if (![job.downloadStatus hasPrefix:@"ok"]) {
+                if ([job.remoteURL hasPrefix:@"http"]) {
+                    NSLog(@"重新下载文件");
+                    [self downloadImage:job.originalURL remotePath:job.remoteURL];
+                }
+                else
+                {
+                    NSLog(@"重新上传文件");
+                    [self uploadPng:job.originalURL];
+                }
+            }
+        }
+    }
     [self.resultTableView reloadData];
 }
 
@@ -110,7 +128,7 @@
     request.HTTPMethod=@"POST";
     [request addValue:@"image/png" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:pngData];
-    
+    taskCount++;
     AFHTTPRequestOperation *op=[[AFHTTPRequestOperationManager manager] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"POST SUCCESS RESPONSE:\n%@",responseObject);
         NSDictionary *jsonResponse=(NSDictionary *)responseObject;
@@ -141,10 +159,15 @@
             job.compressRatio=ratio;
             [self downloadImage:filePath remotePath:downloadURL];
         }
-        [allTasks addObject:job];
-        
+        if (![allTasks containsObject:job]) {
+            [allTasks addObject:job];
+        }
+        taskCount--;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"POST FAIL RESPONSE:\n%d\n%@",[error code] ,operation.responseObject);
+        NSDictionary *jsonResponse=(NSDictionary *)operation.responseObject;
+        NSString *message=[jsonResponse objectForKey:@"message"];
+        
         Task *job=nil;
         for (Task *everyJob in allTasks) {
             if ([everyJob.originalURL isEqualToString:filePath]) {
@@ -155,15 +178,20 @@
             job=[[Task alloc]init];
             job.originalURL=filePath;
         }
-        job.remoteURL=@"网络上传失败";
-        [allTasks addObject:job];
+        job.remoteURL=[NSString stringWithFormat:@"Upload failed: %@",message];
+        if (![allTasks containsObject:job]) {
+            [allTasks addObject:job];
+        }
+        taskCount--;
     }];
+
     [[AFHTTPRequestOperationManager manager].operationQueue addOperation:op];
     
 }
 
 -(void)downloadImage:(NSString *)orignalPath remotePath:(NSString *)remotePath
 {
+    taskCount++;
     NSMutableURLRequest *downloadRequest=[[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:remotePath]];
     AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:downloadRequest];
     //requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
@@ -178,6 +206,7 @@
             }
         }
         job.downloadStatus=[NSString stringWithFormat:@"ok: %@",job.compressRatio];
+        taskCount--;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Download %@ Error : %@", remotePath ,error);
         Task *job=nil;
@@ -187,7 +216,9 @@
             }
         }
         job.downloadStatus=@"下载失败";
+        taskCount--;
     }];
+
     [[AFHTTPRequestOperationManager manager].operationQueue addOperation:requestOperation];
 }
 
@@ -213,20 +244,20 @@
     }
 }
 
-- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
-{
-    NSLog(@"点击行数 %d",row);
-    Task *job=[allTasks objectAtIndex:row];
-    if ([job.remoteURL hasPrefix:@"http"]) {
-        NSLog(@"重新下载文件");
-        [self downloadImage:job.originalURL remotePath:job.remoteURL];
-    }
-    else
-    {
-        NSLog(@"重新上传文件");
-        [self uploadPng:job.originalURL];
-    }
-    return YES;
-}
+//- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
+//{
+//    NSLog(@"点击行数 %d",row);
+//    Task *job=[allTasks objectAtIndex:row];
+//    if ([job.remoteURL hasPrefix:@"http"]) {
+//        NSLog(@"重新下载文件");
+//        [self downloadImage:job.originalURL remotePath:job.remoteURL];
+//    }
+//    else
+//    {
+//        NSLog(@"重新上传文件");
+//        [self uploadPng:job.originalURL];
+//    }
+//    return YES;
+//}
 
 @end
