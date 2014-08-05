@@ -8,8 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate,NSTableViewDataSource,NSTableViewDelegate>
+{
+    NSString                    *folderPath;
+    NSString                    *key;
+    NSString                    *keyParameter;
+    NSMutableArray         *allTasks;
+    NSTimer *timer;
+}
+@property (weak) IBOutlet NSTextField *folderPathTextfield;
+@property (weak) IBOutlet NSTextField *keyTextfield;
+@property (weak) IBOutlet NSTextField *errorMsgLabel;
+@property (weak) IBOutlet NSProgressIndicator *activity;
+@property (weak) IBOutlet NSTableView *resultTableView;
 
 @property (assign) IBOutlet NSWindow *window;
+- (IBAction)selectFolder:(id)sender;
+- (IBAction)start:(id)sender;
 
 @end

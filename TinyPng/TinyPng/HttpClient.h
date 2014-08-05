@@ -19,6 +19,7 @@ typedef enum HttpMethod{
 {
 }
 
+@property (nonatomic,strong)        NSString            *key;
 
 +(HttpClient *)manager;
 
@@ -28,6 +29,6 @@ typedef enum HttpMethod{
                   success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                   failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
--(void)test;
+-(void)uploadPng:(NSString *)filePath withKey:(NSString *)key;
 
 @end

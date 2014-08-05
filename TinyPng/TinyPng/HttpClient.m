@@ -104,4 +104,29 @@ static HttpClient *_sharedMangaer=nil;
     
 }
 
+
+-(void)uploadPng:(NSString *)filePath withKey:(NSString *)key
+{
+    NSData *pngData=[NSData dataWithContentsOfFile:filePath];
+    if (pngData==nil) {
+        return;
+    }
+    NSMutableURLRequest *request=[[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:TINYPNG_URL]];
+    [request addValue:self.key forHTTPHeaderField:@"Authorization"];
+    request.HTTPMethod=@"POST";
+    [request addValue:@"image/png" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:pngData];
+    
+    
+    AFHTTPRequestOperation *op=[[AFHTTPRequestOperationManager manager] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"POST SUCCESS RESPONSE:\n%@",responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"POST FAIL RESPONSE:\n%d\n%@",[error code] ,operation.responseObject);
+    }];
+    [[AFHTTPRequestOperationManager manager].operationQueue addOperation:op];
+
+}
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		834F61AD199084B400B0E5C7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 834F61AC199084B400B0E5C7 /* Task.m */; };
 		CBFD5B59198E531A0026D012 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFD5B58198E531A0026D012 /* Cocoa.framework */; };
 		CBFD5B63198E531A0026D012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFD5B61198E531A0026D012 /* InfoPlist.strings */; };
 		CBFD5B65198E531A0026D012 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFD5B64198E531A0026D012 /* main.m */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		834F61AB199084B400B0E5C7 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		834F61AC199084B400B0E5C7 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		CBFD5B55198E531A0026D012 /* TinyPng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyPng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFD5B58198E531A0026D012 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CBFD5B5B198E531A0026D012 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,8 @@
 		CBFD5B5E198E531A0026D012 /* TinyPng */ = {
 			isa = PBXGroup;
 			children = (
+				834F61AB199084B400B0E5C7 /* Task.h */,
+				834F61AC199084B400B0E5C7 /* Task.m */,
 				CBFD5BAE198E5F5D0026D012 /* Base64.h */,
 				CBFD5BAF198E5F5D0026D012 /* Base64.m */,
 				CBFD5BA9198E53A80026D012 /* HttpClient.h */,
@@ -321,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834F61AD199084B400B0E5C7 /* Task.m in Sources */,
 				CBFD5BB0198E5F5D0026D012 /* Base64.m in Sources */,
 				CBFD5BA6198E53760026D012 /* AFURLRequestSerialization.m in Sources */,
 				CBFD5BA5198E53760026D012 /* AFURLConnectionOperation.m in Sources */,
@@ -469,6 +475,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TinyPng/TinyPng-Prefix.pch";
 				INFOPLIST_FILE = "TinyPng/TinyPng-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -482,6 +489,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TinyPng/TinyPng-Prefix.pch";
 				INFOPLIST_FILE = "TinyPng/TinyPng-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -546,6 +554,7 @@
 				CBFD5B88198E531B0026D012 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CBFD5B89198E531B0026D012 /* Build configuration list for PBXNativeTarget "TinyPngTests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +563,7 @@
 				CBFD5B8B198E531B0026D012 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
