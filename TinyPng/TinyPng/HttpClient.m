@@ -44,7 +44,7 @@ static HttpClient *_sharedMangaer=nil;
                                                   success(operation,responseObject);
                                               }
                                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                  NSLog(@"POST FAIL RESPONSE:\n%d\n%@",[error code] ,operation.responseObject);
+                                                  NSLog(@"POST FAIL RESPONSE:\n%ld\n%@",(long)[error code] ,operation.responseObject);
                                                   failure(operation,error);
                                               }];
     }else if (httpMethod==HttpMethodGet)

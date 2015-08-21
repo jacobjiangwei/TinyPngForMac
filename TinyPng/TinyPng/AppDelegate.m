@@ -15,7 +15,12 @@
 {
 //    [[HttpClient manager] test];
     // Insert code here to initialize your application
-    self.keyTextfield.stringValue=TINYPNGKEY;
+    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+    self.keyTextfield.stringValue=[userDefaultes stringForKey:@"KEY"];
+    if (self.keyTextfield.stringValue == nil || [self.keyTextfield.stringValue isEqualToString:@""]) {
+        self.keyTextfield.stringValue=TINYPNGKEY;
+    }
+    
     taskCount=0;
 }
 
@@ -30,6 +35,9 @@
 
 - (IBAction)start:(id)sender {
     key=self.keyTextfield.stringValue;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:key forKey:@"KEY"];
+
     folderPath=self.folderPathTextfield.stringValue;
     
     if (key==nil || [key isEqualToString:@""] || folderPath==nil || [folderPath isEqualToString:@""]) {
@@ -164,7 +172,7 @@
         }
         taskCount--;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"POST FAIL RESPONSE:\n%d\n%@",[error code] ,operation.responseObject);
+        NSLog(@"POST FAIL RESPONSE:\n%ld\n%@",(long)[error code] ,operation.responseObject);
         NSDictionary *jsonResponse=(NSDictionary *)operation.responseObject;
         NSString *message=[jsonResponse objectForKey:@"message"];
         
