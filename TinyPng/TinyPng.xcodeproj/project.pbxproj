@@ -28,7 +28,6 @@
 		CBFD5BA7198E53760026D012 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFD5B9D198E53760026D012 /* AFURLResponseSerialization.m */; };
 		CBFD5BA8198E53760026D012 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFD5B9F198E53760026D012 /* AFURLSessionManager.m */; };
 		CBFD5BAB198E53A80026D012 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFD5BAA198E53A80026D012 /* HttpClient.m */; };
-		CBFD5BAD198E5A010026D012 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = CBFD5BAC198E5A010026D012 /* 120.png */; };
 		CBFD5BB0198E5F5D0026D012 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFD5BAF198E5F5D0026D012 /* Base64.m */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +83,6 @@
 		CBFD5B9F198E53760026D012 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		CBFD5BA9198E53A80026D012 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		CBFD5BAA198E53A80026D012 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
-		CBFD5BAC198E5A010026D012 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		CBFD5BAE198E5F5D0026D012 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		CBFD5BAF198E5F5D0026D012 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,7 +168,6 @@
 		CBFD5B5F198E531A0026D012 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CBFD5BAC198E5A010026D012 /* 120.png */,
 				CBFD5B60198E531A0026D012 /* TinyPng-Info.plist */,
 				CBFD5B61198E531A0026D012 /* InfoPlist.strings */,
 				CBFD5B64198E531A0026D012 /* main.m */,
@@ -301,7 +298,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBFD5B63198E531A0026D012 /* InfoPlist.strings in Resources */,
-				CBFD5BAD198E5A010026D012 /* 120.png in Resources */,
 				CBFD5B69198E531A0026D012 /* Credits.rtf in Resources */,
 				CBFD5B6F198E531A0026D012 /* MainMenu.xib in Resources */,
 			);

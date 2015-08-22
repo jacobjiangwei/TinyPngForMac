@@ -24,7 +24,7 @@
     }
     
     taskCount=0;
-    [self.logTextView insertText:@"Welcome to use this TinyPng Batch Compress Tool!!\nFeel free to contact me via email: kof2003@126.com wechat: 110773265"];
+    [self.logTextView insertText:@"Welcome to use this TinyPng Batch Compress Tool!!\nFeel free to contact me via email: kof2003@126.com QQ: 110773265"];
 }
 
 - (IBAction)selectFolder:(id)sender {
