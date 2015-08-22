@@ -19,10 +19,12 @@
 }
 @property (weak) IBOutlet NSTextField *folderPathTextfield;
 @property (weak) IBOutlet NSTextField *keyTextfield;
-@property (weak) IBOutlet NSTextField *errorMsgLabel;
-@property (weak) IBOutlet NSProgressIndicator *activity;
+//@property (weak) IBOutlet NSTextField *errorMsgLabel;
+//@property (weak) IBOutlet NSProgressIndicator *activity;
 @property (weak) IBOutlet NSTableView *resultTableView;
-@property (weak) IBOutlet NSTextField *logTextField;
+//@property (weak) IBOutlet NSTextField *logTextField;
+@property (unsafe_unretained) IBOutlet NSTextView *logTextView;
+
 
 @property (assign) IBOutlet NSWindow *window;
 - (IBAction)selectFolder:(id)sender;

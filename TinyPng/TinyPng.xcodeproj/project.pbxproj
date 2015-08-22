@@ -14,7 +14,6 @@
 		CBFD5B69198E531A0026D012 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBFD5B67198E531A0026D012 /* Credits.rtf */; };
 		CBFD5B6C198E531A0026D012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFD5B6B198E531A0026D012 /* AppDelegate.m */; };
 		CBFD5B6F198E531A0026D012 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBFD5B6D198E531A0026D012 /* MainMenu.xib */; };
-		CBFD5B71198E531A0026D012 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFD5B70198E531A0026D012 /* Images.xcassets */; };
 		CBFD5B78198E531A0026D012 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFD5B77198E531A0026D012 /* XCTest.framework */; };
 		CBFD5B79198E531A0026D012 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFD5B58198E531A0026D012 /* Cocoa.framework */; };
 		CBFD5B81198E531B0026D012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFD5B7F198E531B0026D012 /* InfoPlist.strings */; };
@@ -59,7 +58,6 @@
 		CBFD5B6A198E531A0026D012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CBFD5B6B198E531A0026D012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CBFD5B6E198E531A0026D012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		CBFD5B70198E531A0026D012 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CBFD5B76198E531A0026D012 /* TinyPngTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinyPngTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFD5B77198E531A0026D012 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CBFD5B7E198E531B0026D012 /* TinyPngTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TinyPngTests-Info.plist"; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				CBFD5B6A198E531A0026D012 /* AppDelegate.h */,
 				CBFD5B6B198E531A0026D012 /* AppDelegate.m */,
 				CBFD5B6D198E531A0026D012 /* MainMenu.xib */,
-				CBFD5B70198E531A0026D012 /* Images.xcassets */,
 				CBFD5B5F198E531A0026D012 /* Supporting Files */,
 			);
 			path = TinyPng;
@@ -304,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBFD5B63198E531A0026D012 /* InfoPlist.strings in Resources */,
-				CBFD5B71198E531A0026D012 /* Images.xcassets in Resources */,
 				CBFD5BAD198E5A010026D012 /* 120.png in Resources */,
 				CBFD5B69198E531A0026D012 /* Credits.rtf in Resources */,
 				CBFD5B6F198E531A0026D012 /* MainMenu.xib in Resources */,
@@ -429,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -462,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -475,7 +471,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TinyPng/TinyPng-Prefix.pch";
 				INFOPLIST_FILE = "TinyPng/TinyPng-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -489,7 +485,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TinyPng/TinyPng-Prefix.pch";
 				INFOPLIST_FILE = "TinyPng/TinyPng-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

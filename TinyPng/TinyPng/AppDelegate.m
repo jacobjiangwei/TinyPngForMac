@@ -16,12 +16,15 @@
 //    [[HttpClient manager] test];
     // Insert code here to initialize your application
     NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
-    self.keyTextfield.stringValue=[userDefaultes stringForKey:@"KEY"];
+    if ([userDefaultes stringForKey:@"KEY"]!=nil && ![[userDefaultes stringForKey:@"KEY"] isEqualToString:@""]) {
+        self.keyTextfield.stringValue=[userDefaultes stringForKey:@"KEY"];
+    }
     if (self.keyTextfield.stringValue == nil || [self.keyTextfield.stringValue isEqualToString:@""]) {
         self.keyTextfield.stringValue=TINYPNGKEY;
     }
     
     taskCount=0;
+    [self.logTextView insertText:@"Welcome to use this TinyPng Batch Compress Tool!!\nFeel free to contact me via email: kof2003@126.com wechat: 110773265"];
 }
 
 - (IBAction)selectFolder:(id)sender {
@@ -41,21 +44,22 @@
     folderPath=self.folderPathTextfield.stringValue;
     
     if (key==nil || [key isEqualToString:@""] || folderPath==nil || [folderPath isEqualToString:@""]) {
-        self.errorMsgLabel.stringValue=@"Please set folder path.";
+        NSAlert *alert =[NSAlert alertWithMessageText:@"Please select folder path" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please select folder path"];
+//        [alert runModal];
+        [alert beginSheetModalForWindow:self.window completionHandler:nil];
         return;
     }
     
     NSFileManager *fileManager=[NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:folderPath]) {
-        self.errorMsgLabel.stringValue=@"folder not existed";
+        NSAlert *alert =[NSAlert alertWithMessageText:@"Folder not existed" defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:nil];
+        [alert runModal];
         return;
     }
-    [self.activity startAnimation:nil];
-    
-    
+//    self.logTextField.stringValue=[self.logTextField.stringValue stringByAppendingString:@"\n Start..."];
+    [self addLog:@"Start..."];
     NSArray *allPngPath=[[NSArray alloc]initWithArray:[self findAtPath:folderPath]];
     NSLog(@"%@",allPngPath);
-    
     NSString *apikey=[NSString stringWithFormat:@"api:%@",key];
     NSString *base64=[apikey base64EncodedString];
     keyParameter=[NSString stringWithFormat:@"Basic %@",base64];
@@ -76,19 +80,23 @@
 
 -(void)refresh
 {
-    NSLog(@"目前任务数 : %d",taskCount);
-    self.logTextField.stringValue=[NSString stringWithFormat:@"Current task : %d",taskCount];
+    NSLog(@"Current Task : %d",taskCount);
+    [self addLog:[NSString stringWithFormat:@"Current Task : %d",taskCount]];
+//    self.logTextField.stringValue=[NSString stringWithFormat:@"Current task : %d",taskCount];
     if (taskCount<=0) {
         NSLog(@"目前没任务了");
+        [self addLog:@"All Done"];
         for (Task *job in allTasks) {
             if (![job.downloadStatus hasPrefix:@"ok"]) {
                 if ([job.remoteURL hasPrefix:@"http"]) {
                     NSLog(@"重新下载文件");
+//                    [self addLog:@"Re-download files"];
                     [self downloadImage:job.originalURL remotePath:job.remoteURL];
                 }
                 else
                 {
                     NSLog(@"重新上传文件");
+//                    [self addLog:@"Re upload files"];
                     [self uploadPng:job.originalURL];
                 }
             }
@@ -267,5 +275,13 @@
 //    }
 //    return YES;
 //}
+
+-(void)addLog:(NSString *)log
+{
+    [self.logTextView insertText:[NSString stringWithFormat:@"\n%@",log]];
+}
+- (IBAction)signUpDeveloper:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.tinypng.com/developers"]];
+}
 
 @end
