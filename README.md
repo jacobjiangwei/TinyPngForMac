@@ -1,7 +1,9 @@
-TinyPngForMac
+TinyPng For Mac
 =============
 
-Free TinyPng.org Mac Convert Tool
+Tierd of Drag and Download and Rename again and again? Here is simple solution:
+
+Free TinyPng.org Batch Convert Tool for Mac
 
  ![image](https://github.com/jacobjiangwei/TinyPngForMac/blob/master/preview.png)
 
